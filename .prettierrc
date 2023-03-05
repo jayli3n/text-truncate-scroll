@@ -1,0 +1,13 @@
+{
+    "semi": false,
+    "bracketSpacing": true,
+    "trailingComma": "all",
+    "singleQuote": false,
+    "printWidth": 120,
+    "tabWidth": 4,
+    "importOrder": ["^@core/(.*)$", "^@server/(.*)$", "^@ui/(.*)$", "^[./]"],
+    "importOrderSeparation": true,
+    "importOrderSortSpecifiers": true,
+    "organizeImportsSkipDestructiveCodeActions": true,
+    "endOfLine": "auto"
+}
