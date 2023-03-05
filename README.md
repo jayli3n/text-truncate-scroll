@@ -1,6 +1,6 @@
 # Text Truncate Scroll ✨
 
-<a href="https://www.npmjs.com/package/text-truncate-scroll" rel="nofollow"><img src="https://img.shields.io/npm/v/text-truncate-scroll?color=ff4644" alt="npm"></a>
+<a href="https://www.npmjs.com/package/text-truncate-scroll" rel="nofollow"><img src="https://img.shields.io/npm/v/text-truncate-scroll" alt="npm"></a>
 <a href="https://opensource.org/licenses/MIT" rel="nofollow"><img src="https://img.shields.io/github/license/jayli3n/text-truncate-scroll" alt="License"></a>
 <a href="https://github.com/jayli3n" rel="nofollow"><img src="https://img.shields.io/badge/created%20by-%40jayli3n-598fe5" alt="Created by James Li"></a>
 
@@ -11,7 +11,7 @@ A light-weight js utility that truncates overflowing text in a container with el
 * Simple and light-weight (~5 kb)
 * Install with NPM or CDN
 
-It's fine to call `activateTextTruncateScroll()` multiple times because it will not apply text truncate to elements that has already been applied.
+It's fine to call `activateTextTruncateScroll()` multiple times because it will not re-apply text truncate to elements that has already been applied.
 
 **🔗 DEMO:** https://jayli3n.github.io/text-truncate-scroll/
 
