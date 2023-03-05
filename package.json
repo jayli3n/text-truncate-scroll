@@ -4,6 +4,7 @@
   "description": "A light-weight js utility that truncates overflowing text with ellipsis, and shows the text content on hover with a scroll effect.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npx tsc --watch",
     "build": "tsc",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "tslint -p tsconfig.json"
