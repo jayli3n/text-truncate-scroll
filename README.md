@@ -27,7 +27,7 @@ npm i text-truncate-scroll
 
 ### CDN
 ```
-<script src="https://unpkg.com/text-truncate-scroll@1.0.0/lib/index.js"></script>
+<script src="https://unpkg.com/text-truncate-scroll/lib/index.js"></script>
 ```
 
 ## Usage
