@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Text Truncate Scroll</title>
+
+	<script>var exports = {};</script>
+	<script src="https://unpkg.com/text-truncate-scroll@1.0.0/lib/index.js"></script>
+	<script>
+		activateTextTruncateScroll()
+	</script>
+  </head>
+
+  <body>
+	<h1>🖱️ Text Truncate Scroll 🖱️</h1>
+
+	<main>
+		<div>
+			<p class="card-label">❌ Original</p>
+			<p>
+				Imagine you don't know how long this text label will be, that's a responsiveness headache 😭
+			</p>
+		</div>
+
+		<div>
+			<p class="card-label">✅ Text truncate scroll</p>
+			<p class="text-truncate-scroll">
+				Imagine you don't know how long this text label will be, that's a responsiveness headache 😭
+			</p>
+		</div>
+
+		<div class="divider"></div>
+
+		<div>
+			<p class="card-label">❌ Original</p>
+			<p>
+				A light-weight js utility that truncates overflowing text with ellipsis, and shows the text content on hover with a scroll effect.
+			</p>
+		</div>
+
+		<div>
+			<p class="card-label">✅ Text truncate scroll</p>
+			<p class="text-truncate-scroll">
+				A light-weight js utility that truncates overflowing text with ellipsis, and shows the text content on hover with a scroll effect.
+			</p>
+		</div>
+	</main>
+
+	<footer>
+		View on <a href="https://github.com/jayli3n/text-truncate-scroll" target="_blank">GitHub</a> 👀
+	</footer>
+  </body>
+
+  <style>
+	/* Reset */
+	html, body, div, span, applet, object, iframe,
+	h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+	a, abbr, acronym, address, big, cite, code,
+	del, dfn, em, img, ins, kbd, q, s, samp,
+	small, strike, strong, sub, sup, tt, var,
+	b, u, i, center,
+	dl, dt, dd, ol, ul, li,
+	fieldset, form, label, legend,
+	table, caption, tbody, tfoot, thead, tr, th, td,
+	article, aside, canvas, details, embed, 
+	figure, figcaption, footer, header, hgroup, 
+	menu, nav, output, ruby, section, summary,
+	time, mark, audio, video {
+		margin: 0;
+		padding: 0;
+		border: 0;
+		font-size: 100%;
+		font: inherit;
+		vertical-align: baseline;
+	}
+	/* HTML5 display-role reset for older browsers */
+	article, aside, details, figcaption, figure, 
+	footer, header, hgroup, menu, nav, section {
+		display: block;
+	}
+	body {
+		line-height: 1;
+	}
+	ol, ul {
+		list-style: none;
+	}
+	blockquote, q {
+		quotes: none;
+	}
+	blockquote:before, blockquote:after,
+	q:before, q:after {
+		content: '';
+		content: none;
+	}
+	table {
+		border-collapse: collapse;
+		border-spacing: 0;
+	}
+
+	body {
+		position: fixed;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		padding: 1rem;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: .8rem;
+		background-color: #101329;
+
+		font-family: Arial, Helvetica, sans-serif;
+		color: #efefef;
+		line-height: 1.5;
+	}
+
+	h1 {
+		font-size: x-large;
+		font-weight: bold;
+	}
+
+	main {
+		display: flex;
+		flex-direction: column;
+		gap: 1.2rem;
+		max-width: 380px;
+		padding: 1.4rem 1.8rem;
+		border-radius: .7rem;
+		box-shadow: rgba(0, 0, 0, 0.04) 0px 0px 8px;
+		background-color: #222640;
+	}
+
+	.divider {
+		width: 100%;
+		border-bottom: 1px solid #FFFFFF16;
+	}
+
+	.card-label {
+		margin-bottom: .2rem;
+		color: #818181;
+	}
+
+	a {
+		color: #fcb203;
+		text-decoration: none;
+	}
+  </style>
+</html>
