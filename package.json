@@ -1,6 +1,6 @@
 {
   "name": "text-truncate-scroll",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A light-weight js utility that truncates overflowing text with ellipsis, and shows the text content on hover with a scroll effect.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
