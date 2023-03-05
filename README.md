@@ -2,10 +2,12 @@
 
 A light-weight js utility that truncates overflowing text in a container with ellipsis, and shows the text content on hover with a scroll effect.
 
-* Works with any front-end framework (React, VueJS, Svelte etc)
+* Works with any front-end framework (React, VueJS, Angular, Svelte etc)
 * Works in typescript
 * Simple and light-weight (~5 kb)
 * Install with NPM or CDN
+
+It's fine to call `activateTextTruncateScroll()` multiple times because it will not apply text truncate to elements that has already been applied.
 
 **DEMO:** https://jayli3n.github.io/text-truncate-scroll/
 
@@ -44,32 +46,35 @@ activateTextTruncateScroll()
 
 ## API
 
-### activateTextTruncateScroll(options)
+### `activateTextTruncateScroll(options: {...})`
 
-#### `className`
+#### Parameters
 
+`options` *optional*
 
-|Option|Type|Default|Description|
+|Property|Type|Default|Description|
 |------|----|-------|-----------|
-|className|string|xxxxxx|xxxxxx|
+|className|string|text-truncate-scroll|The class name to search for and to apply the text truncate logic.|
 |scrollSpeed|number|60|This is the speed of the text scroll. Play around with different values for what you're after.|
-|timeoutBeforeInit|number|800|The amount of time to wait before running the setup logic. This is recommended because sometimes the DOM elements may take time to completely mount, so it's good idea to give a small wait.|
+|timeoutBeforeInit|number|800|The amount of time to wait before running the setup logic. This is recommended because sometimes DOM elements may take time to completely mount, so it's good idea to give a small wait.|
 
-## Examples with UI frameworks
+## Some examples with UI frameworks
 
 ### React
 
 ```ts
 import { activateTextTruncateScroll } from "text-truncate-scroll"
 
-useEffect(() => {
-	activateTextTruncateScroll()
-}, [])
+const App = () => {
+	useEffect(() => {
+		activateTextTruncateScroll()
+	}, [])
 
-return {
-	<div>
-		<p class="text-truncate-scroll">Something really long text</p>
-	</div>
+	return {
+		<div>
+			<p class="text-truncate-scroll">Some really long text</p>
+		</div>
+	}
 }
 ```
 
@@ -87,7 +92,48 @@ onMounted(() => {
 
 <template>
 	<div>
-		<p class="text-truncate-scroll">Something really long text</p>
+		<p class="text-truncate-scroll">Some really long text</p>
 	</div>
 </template>
 ```
+
+### Angular
+
+```ts
+import { Component } from '@angular/core';
+import { activateTextTruncateScroll } from "text-truncate-scroll"
+
+@Component({
+  selector: 'app',
+  template: `
+	<div>
+		<p class="text-truncate-scroll">Some really long text</p>
+	</div>
+   `
+})
+
+export class App {
+   constructor() {
+      activateTextTruncateScroll()
+   }
+}
+```
+
+### Svelte
+
+```html
+<script>
+import { onMount } from 'svelte';
+import { activateTextTruncateScroll } from "text-truncate-scroll"
+
+onMount(() => {
+	activateTextTruncateScroll()
+})
+</script>
+
+<div>
+   <p class="text-truncate-scroll">Some really long text</p>
+</div>
+```
+
+
