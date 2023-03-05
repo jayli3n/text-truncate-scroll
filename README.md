@@ -1,5 +1,9 @@
 # Text Truncate Scroll ✨
 
+<a href="https://www.npmjs.com/package/text-truncate-scroll" rel="nofollow"><img src="https://img.shields.io/npm/v/text-truncate-scroll?color=ff4644" alt="npm"></a>
+<a href="https://opensource.org/licenses/MIT" rel="nofollow"><img src="https://img.shields.io/github/license/jayli3n/text-truncate-scroll" alt="License"></a>
+<a href="https://github.com/jayli3n" rel="nofollow"><img src="https://img.shields.io/badge/created%20by-%40jayli3n-598fe5" alt="Created by James Li"></a>
+
 A light-weight js utility that truncates overflowing text in a container with ellipsis, and shows the text content on hover with a scroll effect.
 
 * Works with any front-end framework (React, VueJS, Angular, Svelte etc)
@@ -9,7 +13,7 @@ A light-weight js utility that truncates overflowing text in a container with el
 
 It's fine to call `activateTextTruncateScroll()` multiple times because it will not apply text truncate to elements that has already been applied.
 
-**DEMO:** https://jayli3n.github.io/text-truncate-scroll/
+**🔗 DEMO:** https://jayli3n.github.io/text-truncate-scroll/
 
 ![Animation](https://user-images.githubusercontent.com/44139980/222964502-739b1397-addd-4ae3-bf57-1d5d77a19452.gif)
 
