@@ -1,4 +1,4 @@
-interface IOptions {
+export interface IOptions {
     className?: string
     scrollSpeed?: number
     timeoutBeforeInit?: number
