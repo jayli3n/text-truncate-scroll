@@ -41,8 +41,10 @@ const configureOneElement = (element: HTMLElement, options?: IOptions) => {
     span2.textContent = element.textContent
 
     // Give the 2 spans a class names that we can refer to later
+    const elementClassName = `text-truncate-scroll-element-${crypto.randomUUID()}`
     const span1ClassName = `text-truncate-scroll-span-1-${crypto.randomUUID()}`
     const span2ClassName = `text-truncate-scroll-span-2-${crypto.randomUUID()}`
+    element.classList.add(elementClassName)
     span1.classList.add(span1ClassName)
     span2.classList.add(span2ClassName)
 
@@ -57,7 +59,7 @@ const configureOneElement = (element: HTMLElement, options?: IOptions) => {
 
     // Apply specific styles to the all elements to make the package work
     const styles = document.createElement("style")
-    styles.textContent = generateStyles({ span1ClassName, span2ClassName })
+    styles.textContent = generateStyles({ elementClassName, span1ClassName, span2ClassName })
     parentElement?.insertBefore(styles, parentElement.firstChild)
 
     // This function calculates the width and apply styles to make the package work
@@ -71,7 +73,13 @@ const configureOneElement = (element: HTMLElement, options?: IOptions) => {
         // Custom styles to make the hover effect work
         const transformStyles = span2Width > span1Width ? `translateX(calc(-100% + ${span1Width}px - 5px))` : ""
         const transitionStyles = `all ${(span2Width - span1Width) / scrollSpeed}s linear`
-        styles.textContent = generateStyles({ span1ClassName, span2ClassName, transformStyles, transitionStyles })
+        styles.textContent = generateStyles({
+            elementClassName,
+            span1ClassName,
+            span2ClassName,
+            transformStyles,
+            transitionStyles,
+        })
 
         // Then reset back to original
         span2.style.width = ""
@@ -87,24 +95,20 @@ const configureOneElement = (element: HTMLElement, options?: IOptions) => {
 }
 
 const generateStyles = ({
+    elementClassName,
     span1ClassName,
     span2ClassName,
     transformStyles,
     transitionStyles,
 }: {
+    elementClassName: string
     span1ClassName: string
     span2ClassName: string
     transformStyles?: string
     transitionStyles?: string
 }) => `
-p {
+.${elementClassName} {
     display: grid;
-}
-
-span {
-    font-size: inherit;
-    font-weight: inherit;
-    line-height: inherit;
 }
 
 /* Inner span 1 */
@@ -113,11 +117,14 @@ span {
     width: 100%;
     vertical-align: middle;
     overflow: hidden;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
 }
 
-p:hover .${span1ClassName},
-p:focus .${span1ClassName},
-p:active .${span1ClassName} {
+.${elementClassName}:hover .${span1ClassName},
+.${elementClassName}:focus .${span1ClassName},
+.${elementClassName}:active .${span1ClassName} {
     width: auto;
 }
 
@@ -131,11 +138,14 @@ p:active .${span1ClassName} {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
 }
 
-p:hover .${span2ClassName},
-p:focus .${span2ClassName},
-p:active .${span2ClassName} {
+.${elementClassName}:hover .${span2ClassName},
+.${elementClassName}:focus .${span2ClassName},
+.${elementClassName}:active .${span2ClassName} {
     width: auto;
     transform: ${transformStyles || ""};
     transition: ${transitionStyles || ""};

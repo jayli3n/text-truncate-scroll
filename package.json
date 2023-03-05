@@ -24,6 +24,7 @@
     "css",
     "react",
     "vuejs",
+    "svelte",
     "overflow",
     "text",
     "ellipsis",
@@ -31,7 +32,7 @@
     "scroll",
     "responsive"
   ],
-  "author": "James Li",
+  "author": "jayli3n",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/jayli3n/text-truncate-scroll/issues"
