@@ -1,3 +1,9 @@
-export const b = 9
+interface IOptions {
+    className?: string
+}
 
-console.log("test")
+export const activateTextTruncateScroll = (options?: IOptions) => {
+    const className = options?.className || "text-truncate-scroll"
+
+    console.log("test hi")
+}
