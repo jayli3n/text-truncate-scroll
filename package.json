@@ -1,0 +1,34 @@
+{
+  "name": "text-truncate-scroll",
+  "version": "1.0.0",
+  "description": "A light-weight js utility that truncates overflowing text with ellipsis, and shows the text content on hover with a scroll effect.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jayli3n/text-truncate-scroll.git"
+  },
+  "keywords": [
+    "html",
+    "css",
+    "react",
+    "vuejs",
+    "overflow",
+    "text",
+    "ellipsis",
+    "hover",
+    "scroll",
+    "responsive"
+  ],
+  "author": "James Li",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jayli3n/text-truncate-scroll/issues"
+  },
+  "homepage": "https://github.com/jayli3n/text-truncate-scroll#readme",
+  "devDependencies": {
+    "typescript": "^4.9.5"
+  }
+}
