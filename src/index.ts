@@ -44,6 +44,7 @@ const configureOneElement = (element: HTMLElement, options?: IOptions) => {
     const elementClassName = `text-truncate-scroll-element-${crypto.randomUUID()}`
     const span1ClassName = `text-truncate-scroll-span-1-${crypto.randomUUID()}`
     const span2ClassName = `text-truncate-scroll-span-2-${crypto.randomUUID()}`
+    // element.setAttribute(ACTIVATED_ATTRIBUTE, "")
     element.classList.add(elementClassName)
     span1.classList.add(span1ClassName)
     span2.classList.add(span2ClassName)
