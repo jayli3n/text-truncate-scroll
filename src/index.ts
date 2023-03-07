@@ -14,11 +14,11 @@ const ACTIVATED_ATTRIBUTE = "text-truncate-scroll-activated"
 export const activateTextTruncateScroll = (options?: IOptions) => {
     const className = options?.className || "text-truncate-scroll"
 
-    const elements = document.getElementsByClassName(className) as HTMLCollectionOf<HTMLElement>
+    const elements = document.querySelectorAll<HTMLElement>(`.${className}:not([${ACTIVATED_ATTRIBUTE}])`)
 
     for (let i = 0; i < elements.length; i++) {
         const element = elements[i]
-        if (!element.hasAttribute(ACTIVATED_ATTRIBUTE) && element.parentElement) {
+        if (element.parentElement) {
             configureOneElement(element, options)
         }
     }
@@ -34,6 +34,8 @@ const configureOneElement = (element: HTMLElement, options?: IOptions) => {
     const timeoutBeforeInit = options?.timeoutBeforeInit || 800
     const parentElement = element.parentElement
 
+    element.setAttribute(ACTIVATED_ATTRIBUTE, "")
+
     // Convert into nested structure for this package to work:
     // E.g. <p>xxxxxx</p> into <p><span><span>xxxxxx</span></span></p>
     const span1 = document.createElement("span")
@@ -44,7 +46,6 @@ const configureOneElement = (element: HTMLElement, options?: IOptions) => {
     const elementClassName = `text-truncate-scroll-element-${crypto.randomUUID()}`
     const span1ClassName = `text-truncate-scroll-span-1-${crypto.randomUUID()}`
     const span2ClassName = `text-truncate-scroll-span-2-${crypto.randomUUID()}`
-    // element.setAttribute(ACTIVATED_ATTRIBUTE, "")
     element.classList.add(elementClassName)
     span1.classList.add(span1ClassName)
     span2.classList.add(span2ClassName)
