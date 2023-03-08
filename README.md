@@ -8,6 +8,7 @@ A light-weight js utility that truncates overflowing text in a container with el
 
 * Works with any front-end framework (React, VueJS, Angular, Svelte etc)
 * Works in typescript
+* Works on mobile / touch
 * Simple and light-weight (~5 kb)
 * Install with NPM or CDN
 
