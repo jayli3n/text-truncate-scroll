@@ -40,7 +40,7 @@ const configureOneElement = (element: HTMLElement, options?: IOptions) => {
     // E.g. <p>xxxxxx</p> into <p><span><span>xxxxxx</span></span></p>
     const span1 = document.createElement("span")
     const span2 = document.createElement("span")
-    span2.textContent = element.textContent
+    span2.innerHTML = element.innerHTML
 
     // Give the 2 spans a class names that we can refer to later
     const elementClassName = `text-truncate-scroll-element-${crypto.randomUUID()}`
