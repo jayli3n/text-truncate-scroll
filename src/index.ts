@@ -5,6 +5,7 @@ export interface IOptions {
 }
 
 const ACTIVATED_ATTRIBUTE = "text-truncate-scroll-activated"
+const STYLE_ATTRIBUTE = crypto.randomUUID()
 
 /**
  * Setup text truncate scroll with the given options.
@@ -12,16 +13,22 @@ const ACTIVATED_ATTRIBUTE = "text-truncate-scroll-activated"
  * @param options Any options
  */
 export const activateTextTruncateScroll = (options?: IOptions) => {
-    const className = options?.className || "text-truncate-scroll"
+    const timeoutBeforeInit = options?.timeoutBeforeInit || 800
 
-    const elements = document.querySelectorAll<HTMLElement>(`.${className}:not([${ACTIVATED_ATTRIBUTE}])`)
-
-    for (let i = 0; i < elements.length; i++) {
-        const element = elements[i]
-        if (element.parentElement) {
-            configureOneElement(element, options)
+    // Run initial calculate, after a short timeout waiting for parent container to
+    // fully mount etc. Some parents taken time to adjust its dimension
+    setTimeout(() => {
+        const className = options?.className || "text-truncate-scroll"
+    
+        const elements = document.querySelectorAll<HTMLElement>(`.${className}:not([${ACTIVATED_ATTRIBUTE}])`)
+    
+        for (let i = 0; i < elements.length; i++) {
+            const element = elements[i]
+            if (element.parentElement) {
+                configureOneElement(element, options)
+            }
         }
-    }
+    }, timeoutBeforeInit)
 }
 
 /**
@@ -31,7 +38,6 @@ export const activateTextTruncateScroll = (options?: IOptions) => {
  */
 const configureOneElement = (element: HTMLElement, options?: IOptions) => {
     const scrollSpeed = options?.scrollSpeed || 60
-    const timeoutBeforeInit = options?.timeoutBeforeInit || 800
     const parentElement = element.parentElement
 
     element.setAttribute(ACTIVATED_ATTRIBUTE, "")
@@ -61,7 +67,20 @@ const configureOneElement = (element: HTMLElement, options?: IOptions) => {
 
     // Apply specific styles to the all elements to make the package work
     const styles = document.createElement("style")
+    styles.setAttribute(STYLE_ATTRIBUTE, "")
     styles.textContent = generateStyles({ elementClassName, span1ClassName, span2ClassName })
+
+    // Delete all styleElements in the parent div that was previously appended
+    if ( parentElement) {
+        for (let i = 0; i < parentElement.children.length; i++) {
+            const child = parentElement.children[i];
+            if (child.hasAttribute(STYLE_ATTRIBUTE)) {
+                parentElement.removeChild(child)
+            }
+        }
+    }
+
+    // Append the style element
     parentElement?.insertBefore(styles, parentElement.firstChild)
 
     // This function calculates the width and apply styles to make the package work
@@ -90,10 +109,6 @@ const configureOneElement = (element: HTMLElement, options?: IOptions) => {
     // Register a resize observer on it so that we can re-calculate it
     const resizeObserver = new ResizeObserver(calculate)
     resizeObserver.observe(element)
-
-    // Run initial calculate, after a short timeout waiting for parent container to
-    // fully mount etc. Some parents taken time to adjust its dimension
-    setTimeout(calculate, timeoutBeforeInit)
 }
 
 const generateStyles = ({

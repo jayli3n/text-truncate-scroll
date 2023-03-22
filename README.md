@@ -141,4 +141,8 @@ onMount(() => {
 </div>
 ```
 
+# Contribution
 
+Pull requests are welcomed! 😄
+<br />
+If you have any problems or questions, [open an issue](https://github.com/jayli3n/text-truncate-scroll/issues).
