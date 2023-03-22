@@ -5,7 +5,7 @@ export interface IOptions {
 }
 
 const ACTIVATED_ATTRIBUTE = "text-truncate-scroll-activated"
-const STYLE_ATTRIBUTE = crypto.randomUUID()
+const STYLE_ATTRIBUTE = `text-truncate-scroll-style-${crypto.randomUUID()}`
 
 /**
  * Setup text truncate scroll with the given options.
