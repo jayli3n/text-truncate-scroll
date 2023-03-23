@@ -5,7 +5,6 @@ export interface IOptions {
 }
 
 const ACTIVATED_ATTRIBUTE = "text-truncate-scroll-activated"
-const STYLE_ATTRIBUTE = `text-truncate-scroll-style-${crypto.randomUUID()}`
 
 /**
  * Setup text truncate scroll with the given options.
@@ -13,7 +12,7 @@ const STYLE_ATTRIBUTE = `text-truncate-scroll-style-${crypto.randomUUID()}`
  * @param options Any options
  */
 export const activateTextTruncateScroll = (options?: IOptions) => {
-    const timeoutBeforeInit = options?.timeoutBeforeInit || 800
+    const timeoutBeforeInit = options?.timeoutBeforeInit || 90
 
     // Run initial calculate, after a short timeout waiting for parent container to
     // fully mount etc. Some parents taken time to adjust its dimension
@@ -67,15 +66,21 @@ const configureOneElement = (element: HTMLElement, options?: IOptions) => {
 
     // Apply specific styles to the all elements to make the package work
     const styles = document.createElement("style")
-    styles.setAttribute(STYLE_ATTRIBUTE, "")
+    styles.setAttribute("text-truncate-style-for", elementClassName)
     styles.textContent = generateStyles({ elementClassName, span1ClassName, span2ClassName })
 
-    // Delete all styleElements in the parent div that was previously appended
-    if ( parentElement) {
-        for (let i = 0; i < parentElement.children.length; i++) {
-            const child = parentElement.children[i];
-            if (child.hasAttribute(STYLE_ATTRIBUTE)) {
-                parentElement.removeChild(child)
+    // Delete all style elements in the parent div that isn't used by any text truncate scroll
+    if (parentElement) {
+        const styleElements = parentElement.getElementsByTagName("style")
+
+        for (let i = 0; i < styleElements.length; i++) {
+            const styleElement = styleElements[i];
+            const usedByClass = styleElement.getAttribute("text-truncate-style-for")
+
+            // Find all elements that uses this style element
+            const usedByElements = parentElement.getElementsByClassName(usedByClass || "")
+            if (!usedByElements.length) {
+                parentElement.removeChild(styleElement)
             }
         }
     }

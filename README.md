@@ -61,7 +61,7 @@ activateTextTruncateScroll()
 |------|----|-------|-----------|
 |className|string|text-truncate-scroll|The class name to search for and to apply the text truncate logic.|
 |scrollSpeed|number|60|This is the speed of the text scroll. Play around with different values for what you're after.|
-|timeoutBeforeInit|number|800|The amount of time to wait before running the setup logic. This is recommended because sometimes DOM elements may take time to completely mount, so it's good idea to give a small wait.|
+|timeoutBeforeInit|number|90|The amount of time to wait before running the setup logic. This is recommended because sometimes DOM elements may take time to completely mount, so it's good idea to give a small wait.|
 
 ## Some examples with UI frameworks
 
