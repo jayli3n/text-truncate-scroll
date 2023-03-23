@@ -114,6 +114,8 @@ const configureOneElement = (element: HTMLElement, options?: IOptions) => {
     // Register a resize observer on it so that we can re-calculate it
     const resizeObserver = new ResizeObserver(calculate)
     resizeObserver.observe(element)
+
+    calculate()
 }
 
 const generateStyles = ({
