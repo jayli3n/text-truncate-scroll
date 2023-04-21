@@ -18,9 +18,9 @@ export const activateTextTruncateScroll = (options?: IOptions) => {
     // fully mount etc. Some parents taken time to adjust its dimension
     setTimeout(() => {
         const className = options?.className || "text-truncate-scroll"
-    
+
         const elements = document.querySelectorAll<HTMLElement>(`.${className}:not([${ACTIVATED_ATTRIBUTE}])`)
-    
+
         for (let i = 0; i < elements.length; i++) {
             const element = elements[i]
             if (element.parentElement) {
@@ -48,9 +48,9 @@ const configureOneElement = (element: HTMLElement, options?: IOptions) => {
     span2.innerHTML = element.innerHTML
 
     // Give the 2 spans a class names that we can refer to later
-    const elementClassName = `text-truncate-scroll-element-${crypto.randomUUID()}`
-    const span1ClassName = `text-truncate-scroll-span-1-${crypto.randomUUID()}`
-    const span2ClassName = `text-truncate-scroll-span-2-${crypto.randomUUID()}`
+    const elementClassName = `text-truncate-scroll-element-${generateUniqueId()}`
+    const span1ClassName = `text-truncate-scroll-span-1-${generateUniqueId()}`
+    const span2ClassName = `text-truncate-scroll-span-2-${generateUniqueId()}`
     element.classList.add(elementClassName)
     span1.classList.add(span1ClassName)
     span2.classList.add(span2ClassName)
@@ -74,7 +74,7 @@ const configureOneElement = (element: HTMLElement, options?: IOptions) => {
         const styleElements = parentElement.getElementsByTagName("style")
 
         for (let i = 0; i < styleElements.length; i++) {
-            const styleElement = styleElements[i];
+            const styleElement = styleElements[i]
             const usedByClass = styleElement.getAttribute("text-truncate-style-for")
 
             // Find all elements that uses this style element
@@ -175,3 +175,10 @@ const generateStyles = ({
     transition: ${transitionStyles || ""};
 }
 `
+
+// A naive and basic way to generate unique id
+const generateUniqueId = () => {
+    const timestamp = Date.now().toString(36) // convert current time to base 36
+    const randomNum = Math.random().toString(36).substring(2) // get 5 random alphanumeric characters
+    return `${timestamp}-${randomNum}`
+}
